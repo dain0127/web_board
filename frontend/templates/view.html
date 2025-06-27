@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ post.title }}</title>
-</head>
-<body>
-    <h2>{{ post.title }}</h2>
-    <p>작성자: {{ post.author }}</p>
-    <p>{{ post.content }}</p>
-    <a href="/edit/{{ post.id }}">수정</a>
-    <a href="/delete/{{ post.id }}">삭제</a>
-    <a href="/">목록</a>
-</body>
-</html> 
+<!DOCTYPE html>  <!-- HTML5 문서 타입 선언 -->
+<html lang="ko">  <!-- 한국어로 설정된 HTML 문서 시작 -->
+<head>  <!-- 문서의 메타데이터 섹션 시작 -->
+    <meta charset="UTF-8">  <!-- 문자 인코딩을 UTF-8로 설정 -->
+    <title>{{ post.title }}</title>  <!-- 브라우저 탭에 표시될 제목 (게시글 제목으로 동적 설정) -->
+</head>  <!-- 메타데이터 섹션 종료 -->
+<body>  <!-- 문서의 본문 섹션 시작 -->
+    <h2>{{ post.title }}</h2>  <!-- 게시글 제목을 h2 태그로 표시 -->
+    <p>작성자: {{ post.author }}</p>  <!-- 작성자 정보를 단락으로 표시 -->
+    <p>{{ post.content }}</p>  <!-- 게시글 내용을 단락으로 표시 -->
+    <a href="/edit/{{ post.id }}">수정</a>  <!-- 게시글 수정 페이지로 이동하는 링크 -->
+    <a href="/delete/{{ post.id }}">삭제</a>  <!-- 게시글 삭제 기능을 실행하는 링크 -->
+    <a href="/">목록</a>  <!-- 게시판 목록 페이지로 돌아가는 링크 -->
+</body>  <!-- 본문 섹션 종료 -->
+</html>  <!-- HTML 문서 종료 --> 

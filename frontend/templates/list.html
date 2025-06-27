@@ -1,18 +1,45 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>게시판</title>
-</head>
-<body>
-    <h1>게시판</h1>
-    <a href="/write">글쓰기</a>
-    <ul>
-        {% for hello in posts %}
-        <li>
-            <a href="/view/{{ hello.id }}">{{ hello.title }}</a> - {{ hello.author }}
-        </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+<!DOCTYPE html>  <!-- HTML5 문서 타입 선언 -->
+<html lang="ko">  <!-- 한국어로 설정된 HTML 문서 시작 -->
+<head>  <!-- 문서의 메타데이터 섹션 시작 -->
+    <meta charset="UTF-8">  <!-- 문자 인코딩을 UTF-8로 설정 -->
+    <title>게시판</title>  <!-- 브라우저 탭에 표시될 제목 -->
+</head>  <!-- 메타데이터 섹션 종료 -->
+<body>  <!-- 문서의 본문 섹션 시작 -->
+    <h1>게시판</h1>  <!-- 메인 제목 (게시판) -->
+    <a href="/write">글쓰기</a>  <!-- 글쓰기 페이지로 이동하는 링크 -->
+    <ul>  <!-- 순서 없는 목록 시작 -->
+
+        
+        {% for post in posts %}  <!-- Jinja2 템플릿 문법: posts 리스트를 순회 -->
+        <li>  <!-- 목록 항목 시작 -->
+            <a href="/view/{{ post.id }}">{{ post.title }}</a> - {{ post.author }}  <!-- 게시글 제목(링크)과 작성자 표시 -->
+        </li>  <!-- 목록 항목 종료 -->
+        {% endfor %}  <!-- Jinja2 템플릿 문법: for 루프 종료 -->
+
+        {% if IsBlank %}
+            <h2> IsBlank is True </h2>
+        {% else %}
+            <h2> IsBlank is False </h2>
+        {% endif %}
+        
+    </ul>  <!-- 순서 없는 목록 종료 -->
+
+
+    <div>
+        <p>("method:", {{request.method}})</p>
+        <p>("url:", {{request.url}})</p>
+        <p>("headers:", {{dict(request.headers)}})</p>
+        <p>("cookies:", {{request.cookies}})</p>
+        <p>("client:", {{request.client}})</p>
+    </div>
+
+
+
+    <form action="/" method="get">
+        <input type="text" name="query" placeholder="검색어를 입력하세요">
+        <button type="submit">검색</button>
+    </form>
+
+    
+</body>  <!-- 본문 섹션 종료 -->
+</html>  <!-- HTML 문서 종료 -->

@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>글쓰기</title>
-</head>
-<body>
-    <h2>글쓰기</h2>
-    <form method="post" action="/write">
-        제목: <input type="text" name="title"><br>
-        작성자: <input type="text" name="author"><br>
-        내용:<br>
-        <textarea name="content" rows="5" cols="40"></textarea><br>
-        <button type="submit">등록</button>
-    </form>
-    <a href="/">목록</a>
-</body>
-</html> 
+<!DOCTYPE html>  <!-- HTML5 문서 타입 선언 -->
+<html lang="ko">  <!-- 한국어로 설정된 HTML 문서 시작 -->
+<head>  <!-- 문서의 메타데이터 섹션 시작 -->
+    <meta charset="UTF-8">  <!-- 문자 인코딩을 UTF-8로 설정 -->
+    <title>글쓰기</title>  <!-- 브라우저 탭에 표시될 제목 -->
+</head>  <!-- 메타데이터 섹션 종료 -->
+<body>  <!-- 문서의 본문 섹션 시작 -->
+    <h2>글쓰기</h2>  <!-- 페이지 제목 (글쓰기) -->
+    <form method="post" action="/write">  <!-- POST 방식으로 /write 경로에 데이터를 전송하는 폼 -->
+        제목: <input type="text" name="title"><br>  <!-- 제목 입력 필드 (한 줄 텍스트) -->
+        작성자: <input type="text" name="author"><br>  <!-- 작성자 입력 필드 (한 줄 텍스트) -->
+        내용:<br>  <!-- 내용 라벨 -->
+        <textarea name="content" rows="5" cols="40"></textarea><br>  <!-- 내용 입력 필드 (여러 줄 텍스트 영역) -->
+        <button type="submit">등록</button>  <!-- 폼 데이터를 서버로 전송하는 버튼 -->
+    </form>  <!-- 폼 종료 -->
+    <a href="/">목록</a>  <!-- 게시판 목록 페이지로 돌아가는 링크 -->
+</body>  <!-- 본문 섹션 종료 -->
+</html>  <!-- HTML 문서 종료 --> 
