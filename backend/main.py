@@ -53,6 +53,7 @@ def board_list(request: Request):
 def search_list(request: Request, query : str = ""):
     DB_query = ""
     IsBlank = True
+    number_of_board_per_page = 3
     
     if query != "" :
         DB_query = " WHERE title LIKE" +" '%"+query+"%'"
@@ -67,16 +68,26 @@ def search_list(request: Request, query : str = ""):
     # 커서를 생성하여 SQL 쿼리를 실행합니다
     with conn.cursor() as cur:
         # 모든 게시글을 최신순으로 조회합니다
-        cur.execute("SELECT * FROM posts"+ DB_query +" ORDER BY id DESC")
+        cur.execute("SELECT * FROM posts"+ DB_query +
+                    " ORDER BY id DESC")
         #cur.execute("SELECT * FROM posts WHERE title LIKE " +"'%"+query+"%'"+" ORDER BY id DESC")
         # 조회 결과를 가져옵니다
+        posts = cur.fetchall()
+
+        page_count = range(len(posts) // number_of_board_per_page)
+
+        cur.execute("SELECT * FROM posts"+ DB_query +
+                    " ORDER BY id DESC LIMIT" +" "+str(number_of_board_per_page)+" "
+                    +"OFFSET"+" "+str(number_of_board_per_page))
         posts = cur.fetchall()
         
     # 데이터베이스 연결을 종료합니다
     conn.close()
+
     
     # 게시글 목록 템플릿을 렌더링하여 반환합니다
-    return templates.TemplateResponse("list.html", {"request": request, "posts": posts, "IsBlank": IsBlank})
+    return templates.TemplateResponse("list.html", {"request": request, "posts": posts,
+                                                    "IsBlank": IsBlank, "page_count" : page_count})
 
 
 

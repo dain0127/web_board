@@ -40,6 +40,13 @@
         <button type="submit">검색</button>
     </form>
 
-    
+    <!-- 한줄로 나란히 연결시켜드릴게요.  -->
+    <h3>페이징 된 것들</h3>
+    {% for i in page_count %}
+        <span><a href="/write">{{ i+1 }}</a></span>
+    {% endfor %}
+
+    <h1> </h1>
+
 </body>  <!-- 본문 섹션 종료 -->
 </html>  <!-- HTML 문서 종료 -->
