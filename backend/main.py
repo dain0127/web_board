@@ -49,8 +49,8 @@ def board_list(request: Request):
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!
 #내가 추가한 게시글 검색 웹 페이지
-@app.get("/")
-def search_list(request: Request, query : str = ""):
+@app.get("/{page_num}")
+def search_list(request: Request, page_num: int, query : str = ""):
     DB_query = ""
     IsBlank = True
     number_of_board_per_page = 3
@@ -78,7 +78,7 @@ def search_list(request: Request, query : str = ""):
 
         cur.execute("SELECT * FROM posts"+ DB_query +
                     " ORDER BY id DESC LIMIT" +" "+str(number_of_board_per_page)+" "
-                    +"OFFSET"+" "+str(number_of_board_per_page))
+                    +"OFFSET"+" "+str(number_of_board_per_page * (page_num - 1)))
         posts = cur.fetchall()
         
     # 데이터베이스 연결을 종료합니다
@@ -87,7 +87,8 @@ def search_list(request: Request, query : str = ""):
     
     # 게시글 목록 템플릿을 렌더링하여 반환합니다
     return templates.TemplateResponse("list.html", {"request": request, "posts": posts,
-                                                    "IsBlank": IsBlank, "page_count" : page_count})
+                                                    "IsBlank": IsBlank, "page_count" : page_count,
+                                                    "page_num" : page_num})
 
 
 

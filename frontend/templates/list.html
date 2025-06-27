@@ -43,10 +43,10 @@
     <!-- 한줄로 나란히 연결시켜드릴게요.  -->
     <h3>페이징 된 것들</h3>
     {% for i in page_count %}
-        <span><a href="/write">{{ i+1 }}</a></span>
+        <span><a href="/{{ i+1 }}">{{ i+1 }}</a></span>
     {% endfor %}
 
-    <h1> </h1>
+    <h1>page_num : {{page_num}}</h1>
 
 </body>  <!-- 본문 섹션 종료 -->
 </html>  <!-- HTML 문서 종료 -->
